@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "@components/Navbar/Navbar";
+import fetch from "isomorphic-unfetch";
 
 const Home = () => {
   const [productList, setProductList] = useState<TProduct[]>([]);
 
   useEffect(() => {
-    window
-      .fetch("api/avo")
+    fetch("api/avo")
       .then((response) => response.json())
       .then(({ data, length }) => setProductList(data));
   }, []);

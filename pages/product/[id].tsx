@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import fetch from "isomorphic-unfetch";
 
 const ProductItem = () => {
   const {
@@ -10,8 +11,7 @@ const ProductItem = () => {
 
   useEffect(() => {
     if (id)
-      window
-        .fetch(`/api/avo/${id}`)
+      fetch(`/api/avo/${id}`)
         .then((response) => response.json())
         .then((product) => setProduct(product));
   }, [id]);
